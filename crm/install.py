@@ -14,7 +14,14 @@ def before_install():
 	pass
 
 
-def after_install(force=False):
+def after_install():
+	pass
+
+
+def sync_default_crm_data(force=False):
+	if frappe.flags.in_install:
+		return
+
 	add_default_lead_statuses()
 	add_default_deal_statuses()
 	add_default_communication_statuses()
